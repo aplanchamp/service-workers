@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import styles from './Home.scss';
 
+const smartFetch = (uri, config) => new Promise((resolve, reject) =>
+fetch(uri, config).then(
+  (response) => {
+    if (response.ok) {
+      resolve(response);
+    } else {
+      reject(response);
+    }
+  })
+);
+
 export default class Home extends Component {
 
   constructor(props) {
@@ -9,56 +20,47 @@ export default class Home extends Component {
     this.onButtonClicked = this.onButtonClicked.bind(this);
     this.state = {
       data: {},
+      from: '',
     };
   }
 
-  onButtonClicked(url) {
-    const smartFetch = (uri, config) => new Promise((resolve, reject) =>
-    fetch(uri, config).then(
-      (response) => {
-        if (response.ok) {
-          resolve(response);
-        } else {
-          reject(response);
-        }
-      })
-    );
-    smartFetch(url).then(resp => resp.json()).then(res => this.setState({ data: res }));
+  onButtonClicked(url, headerValue) {
+    if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+      smartFetch(url, headerValue && { headers: new Headers({ [headerValue]: 1 }) })
+        .then(resp => resp.json()).then(res => this.setState({ data: res }));
+    }
   }
 
-  onButtonSyncClicked() {
-    navigator.serviceWorker.ready
-    .then((reg) => (
-      reg.sync.register('syncTest')
-    )).then(() => {
-      console.log('Sync registered');
-    }).catch((err) => {
-      console.log('It broke', err.message);
-    });
-
-    // new Promise((resolve, reject) => {
-    //   Notification.requestPermission((result) => { // eslint-disable-line
-    //     if (result !== 'granted') return reject(Error('Denied notification permission'));
-    //     resolve();
-    //   });
-    // }).then(() => (
-    // navigator.serviceWorker.ready
-    // )).then((reg) => (
-    //   reg.sync.register('syncTest')
-    // )).then(() => {
-    //   console.log('Sync registered');
-    // }).catch((err) => {
-    //   console.log('It broke');
-    //   console.log(err.message);
-    // });
+  fetchBoth(url) {
+    let showLiveData = false;
+    if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+      smartFetch(url)
+        .then(resp => resp.json())
+        .then(res => {
+          this.setState({ data: res, from: 'network' });
+        })
+        .then(() => { showLiveData = true; });
+      smartFetch(url, { headers: new Headers({ 'x-use-cache-only': 1 }) })
+        .then(resp => resp.json())
+        .then(res => {
+          if (!showLiveData) {
+            this.setState({ data: res, from: 'cache' });
+          }
+        });
+    }
   }
 
   render() {
-    const { data } = this.state;
+    const { data, from } = this.state;
     return (
       <div className={styles.home}>
-        <h2>Serve content from cache</h2>
-        <button onClick={() => this.onButtonClicked('http://www.omdbapi.com/?t=star&y=&plot=short&r=json')} className={styles.button}>FETCH</button>
+        <h2>Force serve content from cache</h2>
+        <button onClick={() => this.onButtonClicked('http://www.omdbapi.com/?t=star&y=&plot=short&r=json', 'x-use-cache-only')} className={styles.button}>FETCH data in cache</button>
+        <h2>Force serve content from network</h2>
+        <button onClick={() => this.onButtonClicked('http://www.omdbapi.com/?t=star&y=&plot=short&r=json')} className={styles.button}>FETCH data not in cache</button>
+        <h2>Fetch from cache then network</h2>
+        <button onClick={() => this.fetchBoth('http://www.omdbapi.com/?t=star&y=&plot=short&r=json?both=true')} className={styles.button}>FETCH</button>
+        <h2></h2>
         <button
           onClick={() => this.setState({ data: { headers: {} } })} className={styles.button}
         >
@@ -68,10 +70,9 @@ export default class Home extends Component {
           {
             data.headers && data.headers.Referer
           }
+          <h1>{from}</h1>
           {data.Plot}
         </div>
-        <h2>background sync</h2>
-        <button onClick={() => this.onButtonSyncClicked()} className={styles.button}>SYNC</button>
         <Link to="/out" className={styles.link}>
           Move Out
         </Link>
@@ -79,7 +80,3 @@ export default class Home extends Component {
     );
   }
 }
-
-// http://www.omdbapi.com/?t=star&y=&plot=short&r=json
-
-// https://m-lpm.dev5.fullsix.com/api/status
