@@ -1,0 +1,70 @@
+// COLORS
+// -----------------------------------------------------------
+
+$text-color: white !default;
+$link-color: #a7a9ac !default;
+
+$primary-color: #005a85 !default;
+$primary-color-dark: #00284b !default;
+$secondary-color: #f9ac34 !default;
+
+$red: #eb3037 !default;
+$black: black;
+
+// Viewports
+// -----------------------------------------------------------
+
+$viewport-xs: 'only screen and (min-width : 768px)';
+$viewport-sm: 'only screen and (min-width : 1024px)';
+$viewport-md: 'only screen and (min-width : 1280px)';
+$viewport-lg: 'only screen and (min-width : 1400px)';
+$viewport-xl: 'only screen and (min-width : 1600px)';
+$viewport-xxl: 'only screen and (min-width : 1920px)';
+
+// Bases
+// -----------------------------------------------------------
+
+$base-font-family: 'Open Sans', sans-serif;
+$base-font-style: normal;
+$base-font-weight: 300;
+
+$second-font: 'champions';
+$second-font-bold: 'champions-bold';
+
+// Carousel ratio & breakpoint
+// -----------------------------------------------------------
+$carousel: (
+  ratios:(
+    "16_9":(
+      mobile:(
+        breakpoint: 700px,
+        numberItem: 1,
+        aspectRatio: 16 9
+      ),
+      tabletPortrait:(
+        breakpoint: 1000px,
+        numberItem: 3,
+        aspectRatio: 16 9
+      ),
+      tablet:(
+        breakpoint: 1400px,
+        numberItem: 3,
+        aspectRatio: 16 9
+      ),
+      laptop:(
+        breakpoint: 1440px,
+        numberItem: 3,
+        aspectRatio: 16 9
+      ),
+      desktop:(
+        breakpoint: 1600px,
+        numberItem: 3,
+        aspectRatio: 16 9
+      ),
+      wide:(
+        numberItem: 3,
+        aspectRatio: 16 9
+      )
+    )
+  )
+);

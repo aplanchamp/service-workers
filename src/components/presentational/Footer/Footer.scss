@@ -1,0 +1,9 @@
+@import '../../Application/base__css/_settings';
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-family: $base-font-family;
+  text-align: center;
+}

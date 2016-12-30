@@ -1,0 +1,20 @@
+@import '../../Application/base__css/_settings';
+
+.header {
+  font-family: $base-font-family;
+  text-align: center;
+  text-transform: uppercase;
+
+  &__home,
+  &__cycle {
+    margin: .2rem;
+    padding: 1rem;
+    background-color: #515151;
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      background-color: #2f2f2f;
+    }
+  }
+}

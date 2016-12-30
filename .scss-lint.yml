@@ -1,0 +1,197 @@
+linters:
+ BangFormat:
+   enabled: true
+   space_before_bang: true
+   space_after_bang: false
+
+ BorderZero:
+   enabled: true
+
+ ColorKeyword:
+   enabled: false
+
+ ColorVariable:
+   enabled: false
+
+ Comment:
+   enabled: false
+
+ DebugStatement:
+   enabled: true
+
+ DeclarationOrder:
+   enabled: true
+
+ DuplicateProperty:
+   enabled: false
+
+ ElsePlacement:
+   enabled: true
+   style: new_line # or 'same_line'
+
+ EmptyLineBetweenBlocks:
+   enabled: true
+   ignore_single_line_blocks: false
+
+ EmptyRule:
+   enabled: true
+
+ FinalNewline:
+   enabled: true
+   present: true
+
+ HexLength:
+   enabled: false
+   style: short # or 'long'
+
+ HexNotation:
+   enabled: false
+   style: lowercase # or 'uppercase'
+
+ HexValidation:
+   enabled: false
+
+ IdWithExtraneousSelector:
+   enabled: false
+
+ IdSelector:
+   enabled: true
+
+ ImportantRule:
+   enabled: false
+
+ ImportPath:
+   enabled: false
+   leading_underscore: true
+   filename_extension: false
+
+ Indentation:
+   enabled: true
+   allow_non_nested_indentation: true
+   character: space # or 'tab'
+   width: 2
+
+ LeadingZero:
+   enabled: true
+   style: exclude_zero # or 'include_zero'
+
+ MergeableSelector:
+   enabled: false
+   force_nesting: false
+
+ NameFormat:
+   enabled: false
+   convention: hyphenated_lowercase # or 'BEM', or a regex pattern
+
+ NestingDepth:
+   enabled: true
+   max_depth: 4
+
+ PlaceholderInExtend:
+   enabled: false
+
+ PropertySortOrder:
+   enabled: true
+   order: SMACSS
+
+ PropertySpelling:
+   enabled: true
+   extra_properties: []
+
+ PropertyUnits:
+   global: ['em', 'rem', '%'] # Allow relative units globally
+   properties:
+     border: ['px'] # Only pixels
+     line-height: ['rem']
+     font-size: ['em', 'rem', '%']
+     margin: ['rem']
+     padding: ['rem']
+     transition: ['ms']
+     animation: ['ms', 's']
+     width: ['rem', '%', 'vh']
+     height: ['rem', '%', 'vh']
+     min-width: ['rem', '%', 'vh']
+     min-height: ['rem', '%', 'vh']
+     width: ['rem', '%']
+     height: ['rem', '%']
+     animation: ['ms', 's']
+
+ QualifyingElement:
+   enabled: true
+   allow_element_with_attribute: false
+   allow_element_with_class: false
+   allow_element_with_id: false
+
+ SelectorDepth:
+   enabled: true
+   max_depth: 3
+
+ SelectorFormat:
+   enabled: false
+   convention: snake_case # or 'BEM', or 'snake_case', or 'camel_case', or a regex pattern
+
+ Shorthand:
+   enabled: true
+
+ SingleLinePerProperty:
+   enabled: true
+   allow_single_line_rule_sets: true
+
+ SingleLinePerSelector:
+   enabled: true
+
+ SpaceAfterComma:
+   enabled: true
+
+ SpaceAfterPropertyColon:
+   enabled: true
+   style: one_space # or 'no_space', or 'at_least_one_space', or 'aligned'
+
+ SpaceAfterPropertyName:
+   enabled: true
+
+ SpaceBeforeBrace:
+   enabled: true
+   style: space
+   allow_single_line_padding: false
+
+ SpaceBetweenParens:
+   enabled: true
+   spaces: 0
+
+ StringQuotes:
+   enabled: true
+   style: single_quotes # or double_quotes
+
+ TrailingSemicolon:
+   enabled: true
+
+ TrailingZero:
+   enabled: true
+
+ TransitionAll:
+   enabled: true
+
+ UnnecessaryMantissa:
+   enabled: true
+
+ UnnecessaryParentReference:
+   enabled: true
+
+ UrlFormat:
+   enabled: true
+
+ UrlQuotes:
+   enabled: true
+
+ VendorPrefixes:
+   enabled: false
+   identifier_list: base
+   include: []
+   exclude: []
+
+ ZeroUnit:
+   enabled: true
+
+ Compass::*:
+   enabled: false

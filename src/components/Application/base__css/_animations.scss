@@ -1,0 +1,15 @@
+:global {
+  .transition--enter,
+  .transition--leave.is-active {
+    transform: translate3d(0, 10px, 0);
+    opacity: 0;
+  }
+
+  .transition--leave,
+  .transition--enter.is-active {
+    transform: none;
+    transition: opacity 400ms, transform 400ms;
+    opacity: 1;
+    transition-timing-function: ease-in-out;    
+  }
+}

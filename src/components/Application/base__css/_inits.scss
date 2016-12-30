@@ -1,0 +1,49 @@
+iframe {
+  width: 100% !important;
+}
+
+object,
+video,
+img {
+  max-width: 100% !important;
+}
+
+ul,
+ol,
+dl {
+  margin: 0;
+  padding: 0;
+}
+
+hr {
+  display: block;
+  height: .1rem;
+  margin: 1rem 0;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid $black;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+p {
+  margin: 0;
+}
+
+::selection {
+  background: $secondary-color;
+  color: $text-color;
+}
+
+*:focus {
+  outline: none;
+}
+
+img {
+  width: 100%;
+}

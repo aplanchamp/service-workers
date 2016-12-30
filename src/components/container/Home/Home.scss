@@ -1,0 +1,29 @@
+@import '../../Application/base__css/_settings';
+
+.home {
+  margin-top: 5rem;
+  font-family: $base-font-family;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.button {
+  padding: .8rem 1.5rem;
+  border: 0;
+  background-color: #be90d4;
+  color: white;
+  font-family: $base-font-family;
+  font-size: 1rem;
+}
+
+.content {
+  margin-top: 1rem;
+  font-size: .7rem;
+}
+
+.link {
+  bottom: 1rem;
+  position: absolute;
+  right: 0;
+  z-index: 999;
+}

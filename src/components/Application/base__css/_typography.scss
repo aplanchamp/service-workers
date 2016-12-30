@@ -1,0 +1,138 @@
+/* TYPOGRAPHY
+---------------------------------------------------*/
+
+*,
+*::before,
+*::after {
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  font-size: 62.5%; // Set baseline font size to 10px, This is used as a baseline for rem (root ems) values
+  font-size: calc(1em * .625); // For IE11 to do the math properly, See http://bit.ly/1g4X0bX
+}
+
+body {
+  position: relative;
+  background: $primary-color-dark;
+  color: $text-color;
+  font-family: $base-font-family;
+  font-size: 1.6em; // Bump font-size back up to 16px
+  font-style: $base-font-style;
+  font-weight: $base-font-weight;
+  line-height: 1.4;
+
+  @media #{$viewport-xs} {
+    font-size: 1.9em;
+  }
+
+  &:fullscreen {
+    width: 100%;
+  }
+
+}
+
+// Get rid of gap under images by making them display: inline-block; by default
+img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+ul,
+ol,
+dl {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 0;
+  font-family: 'champions';
+  font-size: 1.3em;
+  font-weight: 100;
+  letter-spacing: .1rem;
+  line-height: 1;
+  @media #{$viewport-xs} {
+    font-size: 1.6em;
+  }
+}
+
+h2 {
+  margin: 0;
+  color: $link-color;
+  font-family: 'champions';
+  font-size: 1.1em;
+  font-weight: 100;
+  @media #{$viewport-xs} {
+    font-size: 1.2em;
+  }
+}
+
+h3 {
+  margin: 2.5rem 0 1rem;
+  color: $text-color;
+  font-family: 'champions';
+  font-size: 1.1em;
+  font-weight: 100;
+  @media #{$viewport-xs} {
+    font-size: 1.2em;
+  }
+}
+
+// Links
+// -----------------------------------------------------------
+
+a {
+  color: $link-color;
+  line-height: inherit;
+  text-decoration: none;
+  tap-highlight-color: transparent;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  img { border: 0; }
+}
+
+// Buttons
+// -----------------------------------------------------------
+button {
+  display: inline-block;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+// Code
+// -----------------------------------------------------------
+
+pre,
+code {
+  font-family: Consolas, Monaco, 'Lucida Console', Monospace;
+}
+
+// Fonts
+// -----------------------------------------------------------
+
+@font-face {
+  font-family: 'champions-bold';
+  src: url('../../../../public/fonts/champions_bold.woff2') format('woff2'),
+       url('../../../../public/fonts/champions_bold.woff') format('woff');
+  font-weight: 100 !important;
+}
+
+@font-face {
+  font-family: 'champions';
+  src: url('../../../../public/fonts/champions_regular.woff2') format('woff2'),
+       url('../../../../public/fonts/champions_regular.woff') format('woff');
+  font-weight: 100 !important;
+}

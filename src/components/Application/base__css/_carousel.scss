@@ -1,0 +1,120 @@
+/*  CAROUSEL
+---------------------------------------------------*/
+@import './utilities';
+
+:global .carouselTemplateTitle {
+  transition: color 300ms;
+  color: $text-color;
+  font-weight: bold;
+}
+
+:global .carouselTemplateSubTitle {
+  font-size: 1.4rem;
+}
+
+:global .carouselTitle {
+  margin-bottom: 1.5rem;
+  font-size: 1.4em;
+  text-transform: none;
+}
+
+:global {
+  .slick-list {
+    margin-bottom: 2rem;
+  }
+// scss-lint:disable all
+  .slick-dots {
+    padding-bottom: 1.5rem;
+
+    li.slick-active button:before {
+      color: $text-color;
+    }
+
+    li button:before {
+      color: $text-color;
+    }
+  }
+// scss-lint:enable all
+
+  .slick-slide {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding: 0 1.5rem;
+    font-size: 1.6rem;
+    white-space: normal;
+    cursor: pointer;
+    vertical-align: top;
+    box-sizing: border-box;
+
+    @media #{$viewport-xs} {
+      padding: 0 3rem;
+    }
+    @media #{$viewport-md} {
+      padding: 0 2rem;
+    }
+
+    &:hover {
+      @media #{$viewport-md} {
+        .carouselTemplateTitle {
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+
+  .slick-slider {
+    margin-bottom: 0;
+  }
+
+  .slick-prev,
+  .slick-next {
+    display: none;
+    top: 45%;
+    width: 7rem;
+    height: 9rem;
+    transform: translate3d(0, -50%, 0);
+    transition: background ease 250ms;
+    background: $primary-color-dark;
+
+    &:hover {
+      background: $secondary-color;
+    }
+
+    &:focus {
+      background: $primary-color-dark;
+    }
+
+    &::before {
+      display: inline-block;
+      width: 2.7rem;
+      height: 5rem;
+      content: '';
+    }
+  }
+
+  .slick-disabled {
+    display: none !important;
+  }
+
+  .slick-prev {
+    left: 0;
+
+    &::before {
+      background: url('../../../../public/images/arrow-left.svg') no-repeat;
+    }
+  }
+
+  .slick-next {
+    right: 0;
+
+    &::before {
+      background: url('../../../../public/images/arrow-right.svg') no-repeat;
+    }
+  }
+
+  .slick-slide img {
+    margin-bottom: .7rem;
+  }
+
+}

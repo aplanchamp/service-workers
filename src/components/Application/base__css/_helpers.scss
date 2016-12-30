@@ -1,0 +1,116 @@
+// Block
+// -----------------------------------------------------------
+
+:global {
+  .block {
+    position: relative;
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 2rem 1.5rem;
+    background: $primary-color;
+    box-sizing: border-box;
+    @media #{$viewport-xs} {
+      padding: 2rem 3rem;
+    }
+    @media #{$viewport-md} {
+      border-radius: .6rem;
+    }
+
+    &--noPaddingLeftRight {
+      padding: 2rem 0;
+
+      h1 {
+        padding-left: 1.5rem;
+        @media #{$viewport-xs} {
+          padding-left: 3rem;
+        }
+        @media #{$viewport-md} {
+          padding-left: 2rem;
+        }
+      }
+    }
+
+    &--noPadding {
+      padding: 0;
+
+      h1 {
+        padding: 2rem 0;
+      }
+    }
+  }
+
+  .left,
+  .right {
+    @media #{$viewport-md} {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+
+  .left {
+    @media #{$viewport-md} {
+      width: 68%;
+    }
+  }
+
+  .right {
+    @media #{$viewport-md} {
+      width: 30.5%;
+      margin-left: 1.5%;
+
+      .block {
+        padding: 2rem 1rem;
+      }
+    }
+  }
+
+}
+
+// Clearfix
+// -----------------------------------------------------------
+
+:global {
+  .clearfix {
+    &::before,
+    &::after {
+      display: table;
+      content: ' ';
+    }
+
+    &::after { clear: both; }
+  }
+}
+
+// Hide element
+// -----------------------------------------------------------
+
+:global {
+  .isHide {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+
+:global {
+  .textCenter {
+    text-align: center;
+  }
+}
+
+// Texts
+// -----------------------------------------------------------
+
+%overflow-text {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+// Background
+// -----------------------------------------------------------
+
+%background-gradient {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+}
